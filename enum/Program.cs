@@ -1,22 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
+
+public static class ArrayExtensions
+{
+    public static T[] Add<T>(this T[] array, T newItem)
+    {
+        T[] newArray = new T[array.Length + 1];
+        array.CopyTo(newArray, 0);
+        newArray[array.Length] = newItem;
+        return newArray;
+    }
+}
 
 class Program
 {
     static void Main()
     {
-        List<int> list = new List<int>();
-        list.Add(1);
-        list.Add(2);
-        list.Add(3);
-        list.Add(4);
-
+        int[] arr = new int[0];
+        arr = arr.Add(1);
+        arr = arr.Add(2);
+        arr = arr.Add(3);
+        arr = arr.Add(4);
         int sum = 0;
-        foreach (var item in list)
+        foreach (var item in arr)
         {
             sum += item;
         }
-
         Console.WriteLine(sum);
     }
 }
